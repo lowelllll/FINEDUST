@@ -1,0 +1,8 @@
+html
+  head
+    title=_title
+  body
+    h1 미세먼지를 알고싶은 구역을 적어주세요.
+    form(action="/finedust/city",method="post")
+      input(type="text",placeholder="city",name="city")
+      input(type="submit")
