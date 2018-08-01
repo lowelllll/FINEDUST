@@ -4,10 +4,15 @@ var request = require('request');
 var parseString = require('xml2js').parseString; // xml parsing -> json
 var inspect = require('util').inspect;
 
+
 router.post('/city',function(req,res){ // 지역별로 도시의 미세먼지 확인
   const ServiceKey = "%2Fi9G3u9IiKGAUwHWqz%2FHganxLxlIopwPFbXkIBufTEeCEYL3MyEmUPxm9f42AkbI%2Fp6QH5hZBQC%2BJLagWGm3%2Bw%3D%3D";
   var body = req.body;
-  var city = body.city;
+  var arr_city = body.city.split(" "); // 구와 시를 나눔
+  
+  var city = arr_city[0];
+  var district = arr_city[1];
+
   var request_url = "http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureSidoLIst";
 
   var queryParams = '?' + encodeURIComponent('ServiceKey') + `=${ServiceKey}`; /* Service Key*/
@@ -25,9 +30,9 @@ router.post('/city',function(req,res){ // 지역별로 도시의 미세먼지 �
       var context = {};
       
       context['city'] = city;
+      context['district'] = district;
       context['items'] = finedust_info;
 
-      // console.log(result.response.body[0].totalCount);
       res.render('finedust_list',context);
     });
   });

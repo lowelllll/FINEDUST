@@ -1,25 +1,17 @@
 html
   head
     title=_title
+    link(rel="stylesheet", href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css")
   body
     h1 미세먼지를 알고싶은 구역을 적어주세요.
     form(action="/finedust/city",method="post")
-      select(name="city")
-        option(value="서울") 서울
-        option(value="부산") 부산
-        option(value="대구") 대구
-        option(value="인천") 인천
-        option(value="광주") 광주
-        option(value="대전") 대전
-        option(value="울산") 울산
-        option(value="경기") 경기
-        option(value="강원") 강원
-        option(value="충북") 충북
-        option(value="충남") 충남
-        option(value="전북") 전북
-        option(value="전남") 전남
-        option(value="경북") 경북
-        option(value="경남") 경남
-        option(value="제주") 제주
-        option(value="세종") 세종
+      input(type="text",name="city",id="city")
       input(type="submit")
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
+  script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
+  script.
+    var autocomplete_text = !{JSON.stringify(data)}; // 지역 배열을 받음.
+    $('#city').autocomplete({
+      source:autocomplete_text
+    });
+
