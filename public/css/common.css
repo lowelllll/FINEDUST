@@ -1,0 +1,90 @@
+* {
+  margin:0;
+  padding:0;
+  list-style:none;
+  font-family: 'Nanum Square';
+}
+
+#wrap_1{
+  width:100%;
+  background:url('../image/back.jpg');
+  background-size: 100% 100%;
+}
+#wrap_2{
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.3);
+  overflow:auto;
+}
+
+section{
+  width:30%;
+  height:30%;
+  margin:0 auto;
+  margin-top:20%;
+}
+
+article{
+  width:100%;
+  height:100%;
+  text-align: center;
+}
+
+article > h1{
+  font-size:22px;
+  color:#fff;
+}
+
+form{
+  margin-top:22px;
+  width:100%;
+  text-align: center;
+}
+
+input[type='text']{
+  width:80%;
+  height:50px;
+  border-radius: 10px;
+  border:none;
+  font-size:18px;
+  text-align: center;
+}
+
+input[type="submit"]{
+  display: none;
+}
+
+.ui-menu .ui-menu-item a{
+  background:red;
+  height:10px;
+  font-size:8px;
+}
+
+#ui-id-1{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  max-height: 200px;
+  overflow: scroll;
+}
+.ui-menu .ui-menu-item-wrapper{
+  padding:0;
+}
+.ui-menu-item{
+  height:40px;
+  line-height: 40px;
+}
+.ui-menu-item:hover{
+  border:none;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+	border: none;
+  background: none;
+  background-color:rgba(255,118,117,0.5);
+}

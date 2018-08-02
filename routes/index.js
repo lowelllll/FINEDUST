@@ -19,7 +19,7 @@ router.get('/',function(req,res){
             district_arr.push(district[i]+" "+datas[i][district[i]][j]);  // 배열 요소 추가
     }}
 
-    res.render('index2',{_title:'Jade',data:district_arr});
+    res.render('index',{data:district_arr});
 })
 
 module.exports = router;

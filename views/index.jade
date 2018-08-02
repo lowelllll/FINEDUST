@@ -1,17 +1,47 @@
 html
   head
-    title=_title
+    title="FINEDUST"
     link(rel="stylesheet", href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css")
+    link(rel="stylesheet", href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css")
+    link(rel="stylesheet", href="/css/common.css")
   body
-    h1 미세먼지를 알고싶은 구역을 적어주세요.
-    form(action="/finedust/city",method="post")
-      input(type="text",name="city",id="city")
-      input(type="submit")
+    div(id="wrap_1")
+      div(id="wrap_2")
+        section
+          article
+            h1 현재 거주하고 계시는 지역을 적어주세요.
+            form(action="/finedust/city",method="post")
+              input(type="text",name="city",id="city")
+              input(type="submit")
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
   script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
+  script(src="/js/common.js")
   script.
     var autocomplete_text = !{JSON.stringify(data)}; // 지역 배열을 받음.
     $('#city').autocomplete({
       source:autocomplete_text
     });
+
+    // custom
+    //- $( "#city" ).autocomplete({
+    //-   minLength: 0,
+    //-   source: projects,
+    //-   focus: function( event, ui ) {
+    //-     $( "#project" ).val( ui.item.label );
+    //-     return false;
+    //-   },
+    //-   select: function( event, ui ) {
+    //-     $( "#project" ).val( ui.item.label );
+    //-     $( "#project-id" ).val( ui.item.value );
+    //-     $( "#project-description" ).html( ui.item.desc );
+    //-     $( "#project-icon" ).attr( "src", "images/" + ui.item.icon );
+ 
+    //-     return false;
+    //-   }
+    //- })
+    //- .autocomplete( "instance" )._renderItem = function( ul, item ) {
+    //-   return $( "<li>" )
+    //-     .append( "<div>" + item.label + "<br>" + item.desc + "</div>" )
+    //-     .appendTo( ul );
+    //- };
 

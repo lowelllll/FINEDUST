@@ -9,6 +9,8 @@ var express =  require('express')
 // bodyparser middleware 사용
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.use(express.static('public')); // static file serving
+
 app.set('view engine','jade'); // template 
 app.set('views','./views');
 
