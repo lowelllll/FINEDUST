@@ -7,30 +7,63 @@
 
 #wrap_1{
   width:100%;
-  background:url('../image/back.jpg');
-  background-size: 100% 100%;
 }
+
+/* slide */
+
+#slide {
+  width:100%;
+  height:100%;
+  position: relative;
+}
+
+#slide > img{
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.active{
+  z-index:1;
+}
+
 #wrap_2{
   width:100%;
   height:100%;
-  background-color:rgba(0,0,0,0.3);
+  background-color:rgba(0,0,0,0.4);
   overflow:auto;
+  position: relative;
+  z-index: 2;
 }
 
+header a{
+  text-decoration: none;
+  color:#ff9595;
+}
+
+header h1{
+  padding-top: 20px;
+  font-size: 23px;
+  color: #ff9595;
+  width: 60%;
+  margin: 0 auto;
+}
 section{
   width:30%;
   height:30%;
   margin:0 auto;
-  margin-top:20%;
+  margin-top:18%;
 }
 
 article{
   width:100%;
   height:100%;
+  padding-top:30px;
   text-align: center;
+  display:none;
 }
 
-article > h1{
+article > h2{
   font-size:22px;
   color:#fff;
 }
@@ -41,7 +74,7 @@ form{
   text-align: center;
 }
 
-input[type='text']{
+#city{
   width:80%;
   height:50px;
   border-radius: 10px;
@@ -50,10 +83,20 @@ input[type='text']{
   text-align: center;
 }
 
-input[type="submit"]{
-  display: none;
+article > p{
+  color:#fff;
+  margin-top:13px;
 }
 
+footer{
+  margin-top:200px;
+}
+
+footer p{
+  text-align: center;
+}
+
+/* autocomplete */
 .ui-menu .ui-menu-item a{
   background:red;
   height:10px;
@@ -65,7 +108,8 @@ input[type="submit"]{
   border-bottom-right-radius: 10px;
   text-align: center;
   max-height: 200px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .ui-menu .ui-menu-item-wrapper{
   padding:0;
@@ -73,6 +117,8 @@ input[type="submit"]{
 .ui-menu-item{
   height:40px;
   line-height: 40px;
+  font-size:15px;
+  padding:5px;
 }
 .ui-menu-item:hover{
   border:none;
@@ -86,5 +132,5 @@ a.ui-button:active,
 .ui-button.ui-state-active:hover {
 	border: none;
   background: none;
-  background-color:rgba(255,118,117,0.5);
+  background-color:rgba(255,118,117,0.4);
 }

@@ -6,42 +6,44 @@ html
     link(rel="stylesheet", href="/css/common.css")
   body
     div(id="wrap_1")
-      div(id="wrap_2")
-        section
-          article
-            h1 현재 거주하고 계시는 지역을 적어주세요.
-            form(action="/finedust/city",method="post")
-              input(type="text",name="city",id="city")
-              input(type="submit")
+      div(id="slide")
+        img(src="image/good-1.jpg", alt="wallpaper" class="active" )
+        img(src="image/good-2.jpg", alt="wallpaper"  )
+        img(src="image/good-3.jpg", alt="wallpaper")
+        img(src="image/good-5.jpg", alt="wallpaper")
+        img(src="image/good-6.jpg", alt="wallpaper")
+        div(id="wrap_2")
+          header 
+            h1 
+              a(href="/") FINEDUST
+          section
+            article
+              h2 현재 거주하고 계시는 지역을 적어주세요.
+              form(action="/finedust/city",method="post",id="form",onkeydown="return captureReturnKey(event)")
+                input(type="text",name="city",id="city")
+              p EX)부산 사상구, 서울 관악구
+          footer 
+            p
+              img(src="image/logo.png", alt="logo")
+            
+        
+      
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
   script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
   script(src="/js/common.js")
+  script(src="/js/slide.js")
   script.
     var autocomplete_text = !{JSON.stringify(data)}; // 지역 배열을 받음.
-    $('#city').autocomplete({
-      source:autocomplete_text
-    });
 
-    // custom
-    //- $( "#city" ).autocomplete({
-    //-   minLength: 0,
-    //-   source: projects,
-    //-   focus: function( event, ui ) {
-    //-     $( "#project" ).val( ui.item.label );
-    //-     return false;
-    //-   },
-    //-   select: function( event, ui ) {
-    //-     $( "#project" ).val( ui.item.label );
-    //-     $( "#project-id" ).val( ui.item.value );
-    //-     $( "#project-description" ).html( ui.item.desc );
-    //-     $( "#project-icon" ).attr( "src", "images/" + ui.item.icon );
- 
-    //-     return false;
-    //-   }
-    //- })
-    //- .autocomplete( "instance" )._renderItem = function( ul, item ) {
-    //-   return $( "<li>" )
-    //-     .append( "<div>" + item.label + "<br>" + item.desc + "</div>" )
-    //-     .appendTo( ul );
-    //- };
+    function captureReturnKey(e) { // enter 키 막음
+      if(e.keyCode==13 && e.srcElement.type != 'textarea')
+      return false;
+    }
+
+    $("article").fadeIn().animate({paddingTop:"0px"},1000); // 서서히 뜨기
+
+  script(src="/js/index_autocomplete.js")
+
+
+
 
