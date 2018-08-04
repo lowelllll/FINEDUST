@@ -1,2 +1,2 @@
-# fine_dust
+# FINEDUST
 미세먼지 농도를 알려주는 웹.
