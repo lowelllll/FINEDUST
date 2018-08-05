@@ -1,0 +1,41 @@
+#wrap_1 {
+  display:none;
+}
+#wrap_2{
+  background-color:rgba(0,0,0,0.1)
+}
+section {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 40%;
+  height: 150px;
+}
+
+article{
+  width:100%;
+  height:50%;
+  background-color:rgba(0,0,0,0.4);
+  border-radius: 20px;
+}
+
+section > span {
+  font-size:60px;
+  color:#fff;
+  font-family: 'nanum square light';
+}
+section > p {
+  font-size:15px;
+  display: inline-block;
+  color:#fff;
+  font-family: 'Nanum Square';
+  padding-left:10px;
+}
+article p{
+  font-size:20px;
+  color:#fff;
+  font-family: 'nanum square light';
+  padding:30px;  
+}
+
+
+

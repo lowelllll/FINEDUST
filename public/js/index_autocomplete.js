@@ -15,3 +15,4 @@ $('#city').autocomplete({
       $("#city").css({"border-radius":"10px"});
  }
 });
+

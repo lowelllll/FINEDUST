@@ -1,0 +1,92 @@
+html
+  head
+    title FINEDUST
+    link(rel="stylesheet", href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css")
+    link(rel="stylesheet", href="/css/common.css")
+    link(rel="stylesheet", href="/css/detail.css")
+  body
+  - var grade = 0;
+  - var dustGrade = 0; // 알 수 없음
+  each item in items
+    if item.cityName == district
+      if item.pm10Value  != '-'
+        - var finedust_10 = parseInt(item.pm10Value)
+        if finedust_10 > 150
+          - grade += 4
+        else if finedust_10 > 80
+          - grade += 3
+        else if finedust_10 > 30
+          - grade += 2
+        else 
+          - grade += 1
+      if item.pm25Value  != '-'
+        - var finedust_25 = parseInt(item.pm25Value) // 초미세먼지 등급
+        if finedust_25 > 100
+          - grade += 5
+        else if finedust_25 > 50
+          - grade += 4
+        else if finedust_25 > 15
+          - grade += 3
+        else 
+          - grade + 1
+      if grade > 7
+        - dustGrade = 4 // 매우나쁨 
+      else if grade > 5
+        - dustGrade = 3 // 나쁨
+      else if grade > 3
+        - dustGrade = 2 // 보통
+      else
+        - dustGrade = 1 // 좋음
+      div(id="wrap_1")
+        div(id="slide")
+          if dustGrade == 1
+            img(src="/image/great-2.jpg", alt="wallpaper" class="active")
+            img(src="/image/great-3.jpg", alt="wallpaper")
+            img(src="/image/great-4.jpg", alt="wallpaper")
+            img(src="/image/great-5.jpg", alt="wallpaper")
+            img(src="/image/great-6.jpg", alt="wallpaper")
+            img(src="/image/great-7.jpg", alt="wallpaper")
+          else if dustGrade == 2
+            img(src="/image/good-5.jpg", alt="wallpaper" class="active")
+            img(src="/image/good-2.jpg", alt="wallpaper")
+            img(src="/image/good-3.jpg", alt="wallpaper" )
+            img(src="/image/good-4.jpg", alt="wallpaper")
+            img(src="/image/good-1.jpg", alt="wallpaper" )
+            img(src="/image/good-6.jpg", alt="wallpaper")
+            img(src="/image/good-7.jpg", alt="wallpaper")
+          else if dustGrade == 3
+            img(src="/image/bad-1.jpg", alt="wallpaper" class="active")
+            img(src="/image/bad-2.jpg", alt="wallpaper")
+            img(src="/image/bad-3.jpg", alt="wallpaper")
+            img(src="/image/bad-4.jpg", alt="wallpaper")
+          else if dustGrade == 4
+            img(src="/image/worse-1.jpg", alt="wallpaper" class="active")
+            img(src="/image/worse-2.jpg", alt="wallpaper")
+            img(src="/image/worse-3.jpg", alt="wallpaper")
+            img(src="/image/worst-1.jpg", alt="wallpaper")
+            img(src="/image/worst-2.jpg", alt="wallpaper")
+            img(src="/image/worst-3.jpg", alt="wallpaper")
+          div(id="wrap_2")
+            header 
+                h1 
+                  a(href="/") FINEDUST
+            section
+              if dustGrade == 1
+                span 좋음
+                p 깨끗한 공기 마시러 나가봐요! 🌳
+              else if dustGrade == 2
+                span 보통
+                p 공기 좋은 날 나가서 산책 어때요? 🚶
+              else if dustGrade == 3
+                span 나쁨
+                p 공기가 안좋네요. 마스크를 끼는게 좋겠어요!😷
+              else
+                span 매우나쁨 
+                p 미세먼지가 자욱해요. 왠만해선 밖으로 나가지 말고 부득이하게 나갈 땐 마스크를 꼭 착용해요.😡
+              article
+                p #{item.dataTime} 기준 미세먼지 농도 #{item.pm10Value} | 초미세먼지 농도 #{item.pm25Value}
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
+script(src="/js/common.js")
+script(src="/js/slide.js")
+script.
+  $("#wrap_1").fadeIn("slow"); // 서서히 뜨기

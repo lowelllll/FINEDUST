@@ -6,6 +6,7 @@ var inspect = require('util').inspect;
 
 
 router.post('/city',function(req,res){ // 지역별로 도시의 미세먼지 확인
+  // API 요청
   const ServiceKey = "%2Fi9G3u9IiKGAUwHWqz%2FHganxLxlIopwPFbXkIBufTEeCEYL3MyEmUPxm9f42AkbI%2Fp6QH5hZBQC%2BJLagWGm3%2Bw%3D%3D";
   var body = req.body;
   var arr_city = body.city.split(" "); // 구와 시를 나눔
@@ -33,7 +34,7 @@ router.post('/city',function(req,res){ // 지역별로 도시의 미세먼지 �
       context['district'] = district;
       context['items'] = finedust_info;
 
-      res.render('finedust_list',context);
+      res.render('finedust_detail',context);
     });
   });
 });
