@@ -72,22 +72,36 @@ html
                 h1 
                   a(href="/") FINEDUST
             section
+              - var random_discription = function(grade){
+              -   var great = ['깨끗한 공기 마시러 나가봐요! 🌳','오늘은 맑은 공기 가득, 나들이 어때요?👫','오늘만큼은 숨 깊게 들이쉬어봐요!☺️', '파랑 파랑한 하늘🌤', '밖으로 나가고 싶어지는 깨끗한 공기🌎']
+              -   var good = ['공기가 좋아요.😎','나들이 가기 좋은 공기에요.🐶','공기가 조금 더 좋아지면 좋겠어요.😮','오늘은 소확행을 찾아볼까요?🍰','공기가 좋아요. 가족과 함께 나들이는 어때요?👨‍👩‍👧‍👦']
+              -   var bad = ['공기가 안좋네요. 마스크를 끼는게 좋겠어요!😷','야외 데이트보단 집에서 연인과 오붓하게 영화 한편 보는게 좋겠어요💑','마스크를 끼면 좋을 것 같아요😷','공기가 별로 좋진 않네요. 밖에서 오래 있지 않기!😕']
+              -   var worse = ['이럴수가! 공기가 너무 나쁘네요. 마스크는 꼭 착용하시고 조심하세요.🤢','미세먼지가 자욱해요. 왠만해선 밖으로 나가지 말고 부득이하게 나갈 땐 마스크를 꼭 착용해요.😡','미세먼지 최악. 나가지 마세요👿','공기가 너무 안좋아요. 건강이 좋지 않다면 절대 나가지 마세요.😱','공기가 나빠도 우울해 하지 않기! 집에서도 할 수 있는 것이 많아요💪']
+              -   var num = Math.floor(Math.random() * 5);
+              -   if(grade == 1){
+              -     return great[num]; 
+              -   }else if(grade == 2){
+              -     return good[num]; 
+              -   }else if(grade == 3){
+              -     return bad[num];
+              -   }else{
+              -     return worse[num];  
+              -   }
+              - }
               if dustGrade == 1
                 span 좋음
-                p 깨끗한 공기 마시러 나가봐요! 🌳
               else if dustGrade == 2
                 span 보통
-                p 공기 좋은 날 나가서 산책 어때요? 🚶
               else if dustGrade == 3
                 span 나쁨
-                p 공기가 안좋네요. 마스크를 끼는게 좋겠어요!😷
               else
                 span 매우나쁨 
-                p 미세먼지가 자욱해요. 왠만해선 밖으로 나가지 말고 부득이하게 나갈 땐 마스크를 꼭 착용해요.😡
+              p #{random_discription(dustGrade)}
               article
-                p #{item.dataTime} 기준 미세먼지 농도 #{item.pm10Value} | 초미세먼지 농도 #{item.pm25Value}
+                p #{city} #{district} #{item.dataTime} 기준 미세먼지 농도 #{item.pm10Value} | 초미세먼지 농도 #{item.pm25Value}
 script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
 script(src="/js/common.js")
 script(src="/js/slide.js")
 script.
   $("#wrap_1").fadeIn("slow"); // 서서히 뜨기
+  
