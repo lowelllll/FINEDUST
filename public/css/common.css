@@ -52,3 +52,13 @@ header h1{
   font-weight: 300;
   
 }
+#git{
+  float: right;
+  margin-top:3px;
+}
+#git > img{
+  width:20px;
+  height:20px;
+}
+
+
