@@ -1,6 +1,6 @@
 var height  = $(window).height();
 
-$("#wrap").height(height);
-$("#wrap").resize(function(){
-  $(this).height(height);
+$("#wrap_1").height(height);
+$(window).resize(function(){
+  $("#wrap_1").height(height);
 });
