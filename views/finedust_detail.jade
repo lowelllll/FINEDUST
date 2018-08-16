@@ -1,7 +1,7 @@
 html
   head
     title FINEDUST
-    link(rel="shortcut icon",href="/favicon.ico")
+    link(rel="shortcut icon",href="image/favicon.ico")
     link(rel="stylesheet", href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css")
     link(rel="stylesheet", href="/css/common.css")
     link(rel="stylesheet", href="/css/detail.css")
@@ -91,7 +91,7 @@ html
               -   }else if(grade ==4){
               -     return worse[num];  
               -   }else {
-              -     return '현재 지역의 미세먼지 농도를 알 수 없습니다.☹️'
+              -     return '죄송합니다. 현재 지역의 미세먼지 농도를 알 수 없습니다.☹️'
               -   }
               - }
               if dustGrade == 1
@@ -103,7 +103,7 @@ html
               else if dustGrade == 4
                 span 매우나쁨 
               else 
-                span 알수없음
+                span 알 수 없음
               p #{random_discription(dustGrade)}
               article
                 p #{city} #{district} #{item.dataTime} 기준 미세먼지 농도 #{item.pm10Value} | 초미세먼지 농도 #{item.pm25Value}
