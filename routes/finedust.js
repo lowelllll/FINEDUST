@@ -3,11 +3,16 @@ var router = express.Router();
 var request = require('request');
 var parseString = require('xml2js').parseString; // xml parsing -> json
 var inspect = require('util').inspect;
-
+var fs = require('fs');
 
 router.post('/city',function(req,res){ // 지역별로 도시의 미세먼지 확인
   // API 요청
-  const ServiceKey = "%2Fi9G3u9IiKGAUwHWqz%2FHganxLxlIopwPFbXkIBufTEeCEYL3MyEmUPxm9f42AkbI%2Fp6QH5hZBQC%2BJLagWGm3%2Bw%3D%3D";
+  
+  // ServiceKey 보안
+  var secret = fs.readFileSync('./secret.json');
+  var data = JSON.parse(secret);
+  const ServiceKey = data.ServiceKey;
+  
   var body = req.body;
   var arr_city = body.city.split(" "); // 구와 시를 나눔
   
