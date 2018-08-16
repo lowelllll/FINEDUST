@@ -36,7 +36,7 @@ html
         - dustGrade = 3 // 나쁨
       else if grade > 3
         - dustGrade = 2 // 보통
-      else
+      else if grade >=1
         - dustGrade = 1 // 좋음
       div(id="wrap_1")
         div(id="slide")
@@ -67,6 +67,8 @@ html
             img(src="/image/worst-1.jpg", alt="wallpaper")
             img(src="/image/worst-2.jpg", alt="wallpaper")
             img(src="/image/worst-3.jpg", alt="wallpaper")
+          else if dustGrade == 0
+            img(src="/image/undefined.jpg", alt="undefined" class="active")
           div(id="wrap_2")
             header 
                 h1 
@@ -86,8 +88,10 @@ html
               -     return good[num]; 
               -   }else if(grade == 3){
               -     return bad[num];
-              -   }else{
+              -   }else if(grade ==4){
               -     return worse[num];  
+              -   }else {
+              -     return '현재 지역의 미세먼지 농도를 알 수 없습니다.☹️'
               -   }
               - }
               if dustGrade == 1
@@ -96,8 +100,10 @@ html
                 span 보통
               else if dustGrade == 3
                 span 나쁨
-              else
+              else if dustGrade == 4
                 span 매우나쁨 
+              else 
+                span 알수없음
               p #{random_discription(dustGrade)}
               article
                 p #{city} #{district} #{item.dataTime} 기준 미세먼지 농도 #{item.pm10Value} | 초미세먼지 농도 #{item.pm25Value}
