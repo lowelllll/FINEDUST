@@ -112,4 +112,8 @@ script(src="/js/common.js")
 script(src="/js/slide.js")
 script.
   $("#wrap_1").fadeIn("slow"); // 서서히 뜨기
+
+  var windowHeight = $(window).height; // section margin-top 설정
+  var sectionHeight = height-220;
+  $("section").css("margin-top",sectionHeight+"px");
   
