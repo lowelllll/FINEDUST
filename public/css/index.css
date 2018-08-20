@@ -48,6 +48,14 @@ footer p{
   text-align: center;
 }
 
+footer p button {
+  border:none;
+  background:none;
+  color:#fff;
+  font-size:15px;
+  cursor: pointer;
+}
+
 /* autocomplete */
 .ui-menu .ui-menu-item a{
   background:rgb(102, 75, 75);

@@ -22,16 +22,19 @@ html
                   img(src="image/git.png", alt="git")
           section
             article
-              h2 현재 거주하고 계시는 지역을 적어주세요.
+              if language === "KR"
+                h2 현재 거주하고 계시는 지역을 적어주세요.
+              else 
+                h2 Please write down where you live now.
               form(action="/finedust/city",method="post",id="form",onkeydown="return captureReturnKey(event)")
                 input(type="text",name="city",id="city")
               p EX)부산 사상구, 서울 관악구
           footer 
             p
               img(src="image/logo.png", alt="logo")
+            p 
+              button(type="button",title="Language Change",id="language",value="#{language}") #{language==="KR"?"KR":"US"}
             
-        
-      
   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
   script(src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
   script(src="/js/common.js")
@@ -44,6 +47,18 @@ html
       return false;
     }
 
+    $("#language").on("click",function (){
+      var lang = $(this).attr("value");
+
+      if(lang === "KR"){
+        document.cookie = "language=US;";
+      }else{
+        document.cookie = "language=KR;";
+      }
+
+      location.reload();
+    });
+  
     $("article").fadeIn().animate({paddingTop:"0px"},1000); // 서서히 뜨기
 
   script(src="/js/index_autocomplete.js")
