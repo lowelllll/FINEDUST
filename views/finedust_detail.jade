@@ -83,30 +83,48 @@ html
               -   var worse = ['이럴수가! 공기가 너무 나쁘네요. 마스크는 꼭 착용하시고 조심하세요.🤢','미세먼지가 자욱해요. 왠만해선 밖으로 나가지 말고 부득이하게 나갈 땐 마스크를 꼭 착용해요.😡','미세먼지 최악. 나가지 마세요👿','공기가 너무 안좋아요. 건강이 좋지 않다면 절대 나가지 마세요.😱','공기가 나빠도 우울해 하지 않기! 집에서도 할 수 있는 것이 많아요💪']
               -   var num = Math.floor(Math.random() * 5);
               -   if(grade == 1){
-              -     return great[num]; 
+              -     return language == "KR" ? great[num]:`The air is clear. Let's go together.🌳`; 
               -   }else if(grade == 2){
-              -     return good[num]; 
+              -     return language == "KR" ? good[num]:'The air is good! A blue sky🌤'; 
               -   }else if(grade == 3){
-              -     return bad[num];
+              -     return language == "KR" ? bad[num]:`There's a little bit of fine dust. You'd better wear a mask!😷`;
               -   }else if(grade ==4){
-              -     return worse[num];  
+              -     return language == "KR" ? worse[num]:`The air is too bad. Don't go out!😡`;  
               -   }else {
-              -     return '죄송합니다. 현재 지역의 미세먼지 농도를 알 수 없습니다.☹️'
+              -     return language == "KR" ?'죄송합니다. 현재 지역의 미세먼지 농도를 알 수 없습니다.☹️':'Sorry, The concentration of fine dust is unknown.☹️';
               -   }
               - }
               if dustGrade == 1
-                span 좋음
+                if language == "KR"
+                  span 좋음
+                else 
+                  span GREAT
               else if dustGrade == 2
-                span 보통
+                if language == "KR"
+                  span 보통
+                else 
+                  span GOOD
               else if dustGrade == 3
-                span 나쁨
+                if language == "KR"
+                  span 나쁨
+                else 
+                  span BAD
               else if dustGrade == 4
-                span 매우나쁨 
+                if language == "KR"
+                  span 매우나쁨
+                else 
+                  span WORSE
               else 
-                span 알 수 없음
+                if language == "KR"
+                  span 알 수 없음
+                else 
+                  span UNKNOWN
               p #{random_discription(dustGrade)}
               article
-                p #{city} #{district} #{item.dataTime} 기준 미세먼지 농도 #{item.pm10Value} | 초미세먼지 농도 #{item.pm25Value}
+                if language == "KR"
+                  p #{city} #{district} #{item.dataTime} 기준 미세먼지 농도 #{item.pm10Value} | 기준 초미세먼지 농도 #{item.pm25Value}
+                else
+                  p #{city} #{district} #{item.dataTime} The concentration of fine dust #{item.pm10Value} | The concentration of ultrafine dust #{item.pm25Value}
 script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
 script(src="/js/common.js")
 script(src="/js/slide.js")

@@ -1,13 +1,26 @@
-var express = require('express');
-var router = express.Router();
-var request = require('request');
-var parseString = require('xml2js').parseString; // xml parsing -> json
-var inspect = require('util').inspect;
-var fs = require('fs');
+const express = require('express')
+,router = express.Router()
+,request = require('request')
+,parseString = require('xml2js').parseString // xml parsing -> json
+,inspect = require('util').inspect
+,fs = require('fs')
+,cookie = require('cookie');
 
 router.post('/city',function(req,res){ // 지역별로 도시의 미세먼지 확인
+  var language = ""; // language 쿠키
+
+    if (!req.headers.cookie) {
+        res.set({'Set-Cookie':[
+            `language=KR;`
+        ]});
+        language = "KR";
+    } else {
+        var headerCookie = req.headers.cookie;
+        var cookies = cookie.parse(headerCookie);
+        language = cookies.language;
+    }
+
   // API 요청
-  
   // ServiceKey 보안
   var secret = fs.readFileSync('./secret.json');
   var data = JSON.parse(secret);
@@ -38,6 +51,7 @@ router.post('/city',function(req,res){ // 지역별로 도시의 미세먼지 �
       context['city'] = city;
       context['district'] = district;
       context['items'] = finedust_info;
+      context['language'] = language;
 
       res.render('finedust_detail',context);
     });

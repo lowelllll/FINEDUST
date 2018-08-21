@@ -1,4 +1,4 @@
-var express =  require('express')
+const express =  require('express')
 , http = require('http')
 , app = express()
 , server = http.createServer(app)
@@ -16,8 +16,9 @@ app.use(express.static('public')); // static file serving
 app.set('view engine','jade'); // template 
 app.set('views','./views');
 
-// 자동완성 변수를 위한 middleware 생성
-app.get('/',function(request,response,next){
+
+app.get('/',function(req,res,next){
+    // 자동완성 변수를 위한 middleware 생성
     var json = fs.readFileSync('./korea-administrative-district.json');
     var temp_datas = JSON.parse(json);
     var datas = temp_datas.data
@@ -35,7 +36,8 @@ app.get('/',function(request,response,next){
         }
     };
 
-    request.district = district_arr;
+    req.district = district_arr;
+    
     next(); // 다음 미들웨어를 호출
 });
 
